@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "express-async-error": "^0.0.2",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^4.13.0",
     "mongoose": "^6.8.3",
