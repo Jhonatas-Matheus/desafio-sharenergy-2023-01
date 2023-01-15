@@ -22,7 +22,8 @@ class LoginUserUseCase {
     }
     const token = sign(
       { username: userFound.username, userId: userFound.id },
-      process.env.SECRET_KEY as string
+      process.env.SECRET_KEY as string,
+      { expiresIn: "10s" }
     );
     return { token };
   }
