@@ -1,3 +1,4 @@
+import { AppError } from "../errors/AppError";
 import { IUserModel } from "../modules/entities/User";
 import { IUserRepository } from "../modules/repositories/IUserRepository";
 
@@ -16,10 +17,10 @@ class VerifyIfExistsHelp {
       { password: false }
     );
     if (userFoundByEmail) {
-      throw new Error("Email is already in use.");
+      throw new AppError("Email is already in use.", 409);
     }
     if (userFoundByUsername) {
-      throw new Error("Username is already in use.");
+      throw new AppError("Username is already in use.", 409);
     }
   }
   async verifyToLogin(): Promise<Error | IUserModel | null | undefined> {
@@ -28,7 +29,7 @@ class VerifyIfExistsHelp {
       { password: true }
     );
     if (userFoundByUsername === null || userFoundByUsername === undefined) {
-      throw new Error("Username or password invalid.");
+      throw new AppError("Username or password invalid.", 409);
     } else {
       return userFoundByUsername;
     }

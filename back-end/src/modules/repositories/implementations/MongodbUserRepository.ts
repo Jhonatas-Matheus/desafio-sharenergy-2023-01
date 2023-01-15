@@ -1,14 +1,28 @@
 import mongoose from "mongoose";
 
+import { AppError } from "../../../errors/AppError";
 import { User, IUser, IUserModel } from "../../entities/User";
 import { ICreateUserDTO } from "../../usecases/users/createUser/ICreateUserDTO";
-import { IUserRepository } from "../IUserRepository";
+import { IDisplayPassword, IUserRepository } from "../IUserRepository";
 
 class MongodbUserRepository implements IUserRepository {
   constructor(private repository = User) {}
+  async findUserById(
+    userId: string,
+    password: IDisplayPassword
+  ): Promise<IUserModel | null | undefined> {
+    if (password) {
+      const userFound = await this.repository.findOne({ id: userId });
+      return userFound;
+    }
+    const userFound = await this.repository
+      .findOne({ id: userId })
+      .select("-password");
+    return userFound;
+  }
   async findUserByUsername(
     username: string,
-    { password }
+    password: IDisplayPassword
   ): Promise<IUserModel | undefined | null> {
     if (password) {
       const userFound = await this.repository.findOne({ username });
@@ -21,7 +35,7 @@ class MongodbUserRepository implements IUserRepository {
   }
   async findUserByEmail(
     email: string,
-    { password }
+    password: IDisplayPassword
   ): Promise<IUserModel | undefined | null> {
     if (password) {
       const userFound = await this.repository
@@ -29,25 +43,29 @@ class MongodbUserRepository implements IUserRepository {
         .select("-password");
       return userFound;
     }
-    const userFound = await this.repository.findOne({ email });
-    // .select("-password");
+    const userFound = await this.repository
+      .findOne({ email })
+      .select("-password");
     return userFound;
   }
   async createUser(user: ICreateUserDTO): Promise<IUserModel> {
-    const userCreated = new User({
+    const userToBeCreated = new User({
       _id: new mongoose.Types.ObjectId(),
       username: user.username,
       email: user.email,
       password: user.password,
     });
-    const { _id } = await userCreated.save();
-    const verifyCreate = await this.repository
-      .findOne({ _id })
+    const userSaved = await userToBeCreated.save();
+    const data = await this.repository
+      .findOne({ userSaved })
       .select("-password");
-    if (!verifyCreate) {
-      throw new Error("Deu ruim");
+    if (data) {
+      return data;
     }
-    return verifyCreate;
+    throw new AppError(
+      "Error when trying to create user please try again.",
+      400
+    );
   }
 }
 

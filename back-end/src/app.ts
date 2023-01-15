@@ -1,8 +1,8 @@
-import "express-async-error";
+import "express-async-errors";
 import express from "express";
 
-import { tokenVerify } from "./middlewares/ensureAuthentication";
-import { testRouter } from "./routes/test.authentication.routes";
+import { errorHandle } from "./errors/AppError";
+import { refreshRouter } from "./routes/refresh.token.routes";
 import { loginRouter } from "./routes/user.login.routes";
 import { registerRouter } from "./routes/user.register.routes";
 
@@ -12,6 +12,7 @@ app.use(express.json());
 
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
-app.use("/test", tokenVerify, testRouter);
+// app.use("/refresh", refreshRouter);
 
+app.use(errorHandle);
 export { app };

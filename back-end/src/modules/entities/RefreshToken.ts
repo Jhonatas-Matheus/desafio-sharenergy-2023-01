@@ -8,9 +8,16 @@ interface IRefreshToken {
 }
 interface IRefreshTokenModel extends IRefreshToken, Document {}
 
-const user = new mongoose.Schema<IRefreshTokenModel>({
+const refreshToken = new mongoose.Schema<IRefreshToken>({
+  expiresIn: { type: Number },
   user: {
+    unique: true,
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
 });
+const RefreshToken = mongoose.model<IRefreshTokenModel>(
+  "RefreshToken",
+  refreshToken
+);
+export { IRefreshToken, IRefreshTokenModel, RefreshToken };

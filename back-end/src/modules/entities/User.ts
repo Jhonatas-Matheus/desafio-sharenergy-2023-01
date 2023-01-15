@@ -8,8 +8,8 @@ interface IUser {
 interface IUserModel extends IUser, Document {}
 const user = new mongoose.Schema<IUser>(
   {
-    username: { type: String, required: true, unique: true },
-    email: { type: String, required: true, unique: true },
+    username: { unique: true, type: String, required: true },
+    email: { unique: true, type: String, required: true },
     password: { type: String, required: true },
   },
   { timestamps: true }

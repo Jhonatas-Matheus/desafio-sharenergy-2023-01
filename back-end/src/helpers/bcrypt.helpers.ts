@@ -1,5 +1,7 @@
 import { compare, hashSync, hash } from "bcrypt";
 
+import { AppError } from "../errors/AppError";
+
 class BcryptHelp {
   constructor(
     private passwordToHash: string,
@@ -12,7 +14,7 @@ class BcryptHelp {
     if (this.hashedPassword) {
       return compare(this.passwordToHash, this.hashedPassword);
     }
-    throw new Error("Miss hashed password.");
+    throw new AppError("Miss hashed password.", 400);
   }
 }
 export { BcryptHelp };

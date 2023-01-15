@@ -13,6 +13,10 @@ interface IUserRepository {
     email: string,
     password: IDisplayPassword
   ): Promise<IUserModel | undefined | null>;
+  findUserById(
+    userId: string,
+    password: IDisplayPassword
+  ): Promise<IUserModel | undefined | null>;
 }
 
 export { IUserRepository, IDisplayPassword };
