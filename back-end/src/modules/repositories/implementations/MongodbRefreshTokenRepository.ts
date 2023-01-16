@@ -9,13 +9,23 @@ import { IRefreshTokenRepository } from "../IRefreshTokenRepository";
 
 class MongodbRefreshTokenRepository implements IRefreshTokenRepository {
   constructor(private repository = RefreshToken) {}
+  async findRefreshTokenByIdUser(
+    userId: string
+  ): Promise<IRefreshTokenModel | null | undefined> {
+    const refreshTokenFound = await this.repository.findOne({ user: userId });
+    return refreshTokenFound;
+  }
   async findRefreshTokenById(
     refreshTokenId: string
   ): Promise<IRefreshTokenModel | undefined | null> {
-    const refresheTokenFound = await this.repository.findOne({
-      id: refreshTokenId,
-    });
-    return refresheTokenFound;
+    console.log(refreshTokenId);
+    try {
+      const refresheTokenFound = await this.repository.findById(refreshTokenId);
+      console.log(refresheTokenFound);
+      return refresheTokenFound;
+    } catch (error) {
+      throw new AppError("Token is not found", 404);
+    }
   }
   async createNewRefreshToken(
     user: IUserModel,

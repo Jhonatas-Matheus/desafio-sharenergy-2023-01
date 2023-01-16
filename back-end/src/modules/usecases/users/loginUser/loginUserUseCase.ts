@@ -31,14 +31,19 @@ class LoginUserUseCase {
       process.env.SECRET_KEY as string,
       { expiresIn: "7d" }
     );
+    // return { token };
+    const refreshTokenAlreadyExists =
+      await this.repositoryRefreshToken.findRefreshTokenByIdUser(userFound.id);
+    if (!refreshTokenAlreadyExists) {
+      const expiresIn = dayjs().add(365, "days").unix();
+      const refreshTokenGenerate =
+        await this.repositoryRefreshToken.createNewRefreshToken(
+          userFound.id,
+          expiresIn
+        );
+      return { token, refreshToken: refreshTokenGenerate };
+    }
     return { token };
-    // const expiresIn = dayjs().add(365, "days").unix();
-    // const refreshTokenGenerate =
-    //   await this.repositoryRefreshToken.createNewRefreshToken(
-    //     userFound.id,
-    //     expiresIn
-    //   );
-    // return { token, refreshToken: refreshTokenGenerate };
   }
 }
 export { LoginUserUseCase };

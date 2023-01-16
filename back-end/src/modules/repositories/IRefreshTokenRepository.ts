@@ -9,6 +9,9 @@ interface IRefreshTokenRepository {
     user: IUserModel,
     expiresIn: number
   ): Promise<IRefreshTokenModel | null | undefined>;
+  findRefreshTokenByIdUser(
+    userId: string
+  ): Promise<IRefreshTokenModel | null | undefined>;
 }
 
 export { IRefreshTokenRepository };
