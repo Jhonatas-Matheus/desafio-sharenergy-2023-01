@@ -8,7 +8,6 @@ import { IRefreshTokenResponse } from "./RefreshTokenDTO";
 class RefreshTokenUserUseCase {
   constructor(private repositoryRefreshToken: IRefreshTokenRepository) {}
   async execute(refresh_token: string): Promise<IRefreshTokenResponse> {
-    console.log(refresh_token);
     const refreshToken = await this.repositoryRefreshToken.findRefreshTokenById(
       refresh_token
     );

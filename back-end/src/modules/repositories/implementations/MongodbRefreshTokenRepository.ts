@@ -18,10 +18,8 @@ class MongodbRefreshTokenRepository implements IRefreshTokenRepository {
   async findRefreshTokenById(
     refreshTokenId: string
   ): Promise<IRefreshTokenModel | undefined | null> {
-    console.log(refreshTokenId);
     try {
       const refresheTokenFound = await this.repository.findById(refreshTokenId);
-      console.log(refresheTokenFound);
       return refresheTokenFound;
     } catch (error) {
       throw new AppError("Token is not found", 404);

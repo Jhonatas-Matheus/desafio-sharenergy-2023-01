@@ -9,7 +9,7 @@ class MongodbUserRepository implements IUserRepository {
   constructor(private repository = User) {}
   async findUserById(
     userId: string,
-    password: IDisplayPassword
+    { password }: IDisplayPassword
   ): Promise<IUserModel | null | undefined> {
     if (password) {
       const userFound = await this.repository.findOne({ id: userId });
