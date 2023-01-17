@@ -1,12 +1,18 @@
 import React from "react";
 
 type Props = {
+  tailWindClass?: string;
   children: React.ReactNode;
 };
 
-const Container = ({ children }: Props) => {
+const Container = ({
+  children,
+  tailWindClass = "justify-between flex flex-col items-center",
+}: Props) => {
   return (
-    <div className="relative overflow-y-hidden justify-between flex flex-col items-center w-[100%] mt-[80px] h-full  ">
+    <div
+      className={`relative w-full mt-[80px] h-full  overflow-y-hidden ${tailWindClass}`}
+    >
       {children}
     </div>
   );

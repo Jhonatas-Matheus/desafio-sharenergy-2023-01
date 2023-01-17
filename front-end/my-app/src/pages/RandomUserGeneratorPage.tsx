@@ -97,10 +97,13 @@ const DashboardPage = (props: Props) => {
   };
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
-        <div className="flex gap-1 pt-2 px-4">
+      <form
+        className=" flex flex-col items-center w-full"
+        onSubmit={handleSubmit}
+      >
+        <div className="flex gap-2 pt-4 px-4 md:px-4">
           <input
-            className=" bg-slate-200 p-2 rounded-md focus:outline-none focus:bg-slate-300"
+            className=" bg-slate-200 w-[40%] md:w-auto p-2 rounded-md focus:outline-none focus:bg-slate-300 "
             ref={searchValue}
             placeholder="Type what you want to search."
             type="text"
@@ -118,16 +121,16 @@ const DashboardPage = (props: Props) => {
             Reset Search
           </button>
         </div>
-        <div className="flex justify-around">
-          <label>
+        <div className="flex gap-4">
+          <label className="flex gap-2 items-center">
             <input ref={optionName} type="radio" name="name" id="" />
             Name
           </label>
-          <label>
+          <label className="flex gap-2 items-center">
             <input ref={optionEmail} type="radio" name="name" id="" />
             Email
           </label>
-          <label>
+          <label className="flex gap-2 items-center">
             <input ref={optionUsername} type="radio" name="name" id="" />
             Username
           </label>
