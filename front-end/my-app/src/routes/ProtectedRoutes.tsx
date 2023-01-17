@@ -10,7 +10,7 @@ const ProtectedRoutes = ({}: Props) => {
   useEffect(() => {
     const getUser = async () => {
       if (!(await userAuthenticated)) {
-        navigate("/");
+        // navigate("/");
       }
     };
     getUser();

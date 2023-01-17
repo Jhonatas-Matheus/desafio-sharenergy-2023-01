@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import Container from "../components/Container";
 import { IUserLoginResponse } from "../hooks/useRequests";
-import { api } from "../services/api";
+import { apiLocal } from "../services/api";
 import { toastError, toastSucess } from "../utils/ReactToast";
 import { UserContext } from "../context/UserContext";
 import { useAuthentication } from "../hooks/useAuthentication";
@@ -36,7 +36,10 @@ const LoginPage = (props: Props) => {
       password: password.current?.value as string,
     };
     try {
-      const response = (await api.post("/login", userData)) as AxiosResponse;
+      const response = (await apiLocal.post(
+        "/login",
+        userData
+      )) as AxiosResponse;
       sessionStorage.setItem("token", response.data.token);
       if (persistedLogedOption) {
         localStorage.setItem("token", response.data.token);

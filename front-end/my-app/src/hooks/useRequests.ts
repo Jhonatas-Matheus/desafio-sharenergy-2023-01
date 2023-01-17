@@ -1,4 +1,4 @@
-import { api } from "../services/api";
+import { apiLocal } from "../services/api";
 export interface IUserLoginResponse {
   token: string;
 }
@@ -9,7 +9,7 @@ export interface IUserLoginRequest {
 const useLogin = async (
   user: IUserLoginRequest
 ): Promise<IUserLoginResponse> => {
-  const payload = await api.post("/login", user);
+  const payload = await apiLocal.post("/login", user);
   console.log(payload);
   return payload.data as IUserLoginResponse;
 };

@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
-import { api } from "../services/api";
+import { apiLocal } from "../services/api";
 export interface IUserResponse {
   _id: string;
   username: string;
@@ -23,7 +23,7 @@ const useAuthentication = async (): Promise<IUserResponse | void> => {
   //   return navigate("/");
   // }
   try {
-    const response = (await api.post(
+    const response = (await apiLocal.post(
       "/token",
       { token: tokenOfSessionStorage },
       {
