@@ -64,7 +64,7 @@ const DashboardPage = (props: Props) => {
       }
     };
     getData();
-  }, [currentPage]);
+  }, [currentPage, windowSize]);
   console.log(windowSize);
   const nextPage = () => {
     setCurrentPage(currentPage + 1);

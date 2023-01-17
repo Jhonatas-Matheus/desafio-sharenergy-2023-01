@@ -92,16 +92,13 @@ const Navbar = (props: Props) => {
               CRUD Api
             </Link>
           </li>
+          <li className="border-b-2">
+              <button className="font-bold" onClick={logout}>
+                Logout
+              </button>
+            </li>
         </ul>
       </nav>
-      {/* <div
-        className={
-          menuState
-            ? "fixed top-0 left-0 opacity-100 z-10 min-w-[100%] min-h-[100%] bg-white duration-300"
-            : "fixed top-0 left-0 opacity-0 -z-10 min-w-[100%] min-h-[100%] bg-white duration-300"
-        }
-        onClick={changeMenuState}
-      ></div> */}
     </>
   );
 };

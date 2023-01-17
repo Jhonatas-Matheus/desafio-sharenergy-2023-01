@@ -55,12 +55,12 @@ const LoginPage = (props: Props) => {
   };
   return (
     <Container>
-      <div className="flex flex-col justify-between py-4 w-[70%] h-[50%] md:w-[30%] md:h-[40%] rounded-xl shadow-perso2">
-        <h2 className="text-center text-gray-500 text-4xl font-medium">
+      <div className="flex flex-col justify-between py-4 w-[70%] min-h-[250px] md:max-h-[350px] h-[50%] md:w-[30%] md:h-[40%] rounded-xl shadow-perso2">
+        <h2 className="text-center h- text-gray-500 text-4xl font-medium">
           Login
         </h2>
         <form
-          className="flex w-full h-full flex-col px-4 justify-center gap-2 "
+          className="flex w-full object-contain h-full flex-col px-4 justify-center gap-2 "
           onSubmit={(e) => handleSubmit(e)}
         >
           <input
