@@ -18,7 +18,7 @@ const Navbar = (props: Props) => {
   };
   return (
     <>
-      <header className="fixed z-10 flex w-full h-[80px] shadow-xl px-5 items-center justify-between bg-white">
+      <header className="fixed top-0 z-10 flex w-full h-[80px] shadow-xl px-5 items-center justify-between bg-white">
         <img
           src={logo}
           className="w-[50%] md:w-[20%] object-scale-down"
@@ -28,7 +28,7 @@ const Navbar = (props: Props) => {
         <nav className="hidden md:flex">
           <ul className="flex gap-4">
             <li>
-              <Link to="/random-user" className="font-bold">
+              <Link to="/random-users" className="font-bold">
                 Random User Generator
               </Link>
             </li>

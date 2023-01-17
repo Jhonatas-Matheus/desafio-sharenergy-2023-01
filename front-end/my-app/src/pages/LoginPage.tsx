@@ -55,7 +55,7 @@ const LoginPage = (props: Props) => {
   };
   return (
     <Container>
-      <div className="flex flex-col justify-between py-4 w-[70%] min-h-[250px] md:max-h-[350px] h-[50%] md:w-[30%] md:h-[40%] rounded-xl shadow-perso2">
+      <div className="flex flex-col my-auto justify-between py-4 min-w-[280px] md:min-w-[400px] w-[70%] min-h-[250px] md:max-h-[350px] h-[50%] md:w-[30%] md:h-[40%] rounded-xl shadow-perso2">
         <h2 className="text-center h- text-gray-500 text-4xl font-medium">
           Login
         </h2>

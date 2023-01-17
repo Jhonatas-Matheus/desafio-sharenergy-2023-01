@@ -6,7 +6,7 @@ type Props = {
 
 const Container = ({ children }: Props) => {
   return (
-    <div className="relative flex flex-col items-center justify-center w-[100%] pt-[80px] h-[100%] ">
+    <div className="relative overflow-y-hidden justify-between flex flex-col items-center w-[100%] mt-[80px] h-full  ">
       {children}
     </div>
   );
