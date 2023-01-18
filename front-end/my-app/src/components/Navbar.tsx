@@ -73,7 +73,7 @@ const Navbar = (props: Props) => {
         </div>
         <ul className="flex z-20 w-full mt-40 h-full flex-col gap-2">
           <li className="border-b-2">
-            <Link to="/random-user" className="font-bold">
+            <Link to="/random-users" className="font-bold">
               Random User Generator
             </Link>
           </li>
@@ -93,10 +93,10 @@ const Navbar = (props: Props) => {
             </Link>
           </li>
           <li className="border-b-2">
-              <button className="font-bold" onClick={logout}>
-                Logout
-              </button>
-            </li>
+            <button className="font-bold" onClick={logout}>
+              Logout
+            </button>
+          </li>
         </ul>
       </nav>
     </>
