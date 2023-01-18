@@ -20,8 +20,11 @@ const CatPage = (props: Props) => {
     setCatImage("");
   };
   return (
-    <Container tailWindClass=" flex flex-col justify-around items-center py-10">
-      <form onSubmit={handleSubmit} className="flex flex-col items-center ">
+    <Container tailWindClass=" flex flex-col justify-around items-center py-10 w-full">
+      <form
+        onSubmit={handleSubmit}
+        className="flex pt-4 md:pt-0 flex-col items-center "
+      >
         <input
           className=" bg-slate-200 p-2 rounded-md focus:outline-none focus:bg-slate-300"
           ref={searchValue}
@@ -43,7 +46,7 @@ const CatPage = (props: Props) => {
           </button>
         </div>
       </form>
-      <div className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] mb-10 md:mb-48">
+      <div className="min-w-[300px] min-h-[300px] max-w-[300px] max-h-[300px]  md:max-w-[300px] md:max-h-[300px] mb-10 md:mb-48">
         {catImage.length > 0 ? (
           <img
             className="object-scale-down w-full h-full"
@@ -51,7 +54,11 @@ const CatPage = (props: Props) => {
             alt="Imagem do gato"
           />
         ) : (
-          <img src={Empty} alt="Imagem empty"></img>
+          <img
+            className="object-scale-down w-full h-ful"
+            src={Empty}
+            alt="Imagem empty"
+          ></img>
         )}
       </div>
     </Container>

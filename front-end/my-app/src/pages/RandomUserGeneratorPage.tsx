@@ -15,6 +15,11 @@ import { apiRandomUser } from "../services/api";
 import { RxDoubleArrowRight } from "react-icons/rx";
 import { RxDoubleArrowLeft } from "react-icons/rx";
 import { useResize } from "../hooks/useResize";
+// Somethings to emprove after end project:
+//  Clean input after submit;
+//  Converte Forms elements to Isolated Component;
+//  Fix bug scroll bar in screeen > 1280;
+//  Customize Scroll bar with color theme;
 
 type Props = {};
 interface IUserRandom {

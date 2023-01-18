@@ -54,7 +54,7 @@ const DogsPage = (props: Props) => {
             alt=""
           />
         ) : (
-          <p>
+          <p className="text-center">
             Please press the button with dog for generate a random dog picture.
           </p>
         )}
