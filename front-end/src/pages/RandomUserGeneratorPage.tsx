@@ -24,6 +24,9 @@ const DashboardPage = (props: Props) => {
   const [triggerResetSearch, setTriggerResetSearch] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const handleResetSearch = () => {
+    if(searchValue.current){
+      searchValue.current.value = ''
+    }
     setTriggerResetSearch(!triggerResetSearch);
   };
   const handleSubmit = (e: SyntheticEvent) => {

@@ -7,7 +7,7 @@ import { codesHttpsOficial } from "../utils/CodesHtttp";
 type Props = {};
 
 const CatPage = (props: Props) => {
-  const [catImage, setCatImage] = useState<string>("");
+  const [catImage, setCatImage] = useState<string>("https://http.cat/100");
   const handleSubmit = async (e: SyntheticEvent, value: string) => {
     e.preventDefault();
     setCatImage(("https://http.cat/" + value) as string);

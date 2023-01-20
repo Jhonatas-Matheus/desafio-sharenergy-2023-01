@@ -6,17 +6,22 @@ type Props = {};
 
 const DogsPage = (props: Props) => {
   const [dogChose, setDogChose] = useState<string>();
+  const [buttonDisable, setButtonDisable] = useState<boolean>(false)
   const [lengthList, setLengthList] = useState<number>();
   const [picturesId, setPicturesId] = useState<string[]>();
   const generateRandomNumber = () =>
     Math.floor(Math.random() * (lengthList as number));
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const handleSubmit = async (e: SyntheticEvent) => {
+    setButtonDisable(true)
     e.preventDefault();
     const randomDogNumber = generateRandomNumber();
     if (picturesId) {
       setDogChose(`https://random.dog/${picturesId[randomDogNumber]}`);
     }
+    setTimeout(()=>{
+      setButtonDisable(false)
+    },2000)
   };
   useEffect(() => {
     const getData = async () => {
@@ -41,7 +46,7 @@ const DogsPage = (props: Props) => {
           Clique no botão abaixo para gerar uma foto de cachorro aleatória.
         </h2>
         <div className="flex gap-1 pt-2 px-4">
-          <button>
+          <button disabled={buttonDisable}>
             <img src={IconDog} alt="" />
           </button>
         </div>
