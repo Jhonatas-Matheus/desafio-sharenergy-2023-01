@@ -65,14 +65,14 @@ A aplicação criada para o desafio pode ser aprimorada com recursos pensados po
 
 ### Mas, afinal, quais ferramentas a Sharenergy utiliza?
 
-* [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) e [Typescript](https://www.typescriptlang.org/)
-* Front-end: [ReactJS](https://reactjs.org/) e [React Native](https://reactnative.dev/)
-* Back-end: [Node.js](https://nodejs.org/en/), [NestJS](https://nestjs.com/) e [Go](https://golang.org/)
-* Banco de dados: [MongoDB](https://www.mongodb.com/) do lado do servidor e [Minimongo](https://guide.meteor.com/collections.html) do lado do cliente (cache)
-* Gerenciamento de Containers: [Docker](https://www.docker.com/)
-* Gerenciamento de Repositórios: [NX](https://nx.dev/)
-* UI: [Tailwind CSS](https://tailwindcss.com/) e [Material-UI V4](https://v4.mui.com/)
-* Sistema Operacional (principal): [Linux](https://www.linux.org/), também sendo possível utilizar o [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/) (WSL)
+- [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) e [Typescript](https://www.typescriptlang.org/)
+- Front-end: [ReactJS](https://reactjs.org/) e [React Native](https://reactnative.dev/)
+- Back-end: [Node.js](https://nodejs.org/en/), [NestJS](https://nestjs.com/) e [Go](https://golang.org/)
+- Banco de dados: [MongoDB](https://www.mongodb.com/) do lado do servidor e [Minimongo](https://guide.meteor.com/collections.html) do lado do cliente (cache)
+- Gerenciamento de Containers: [Docker](https://www.docker.com/)
+- Gerenciamento de Repositórios: [NX](https://nx.dev/)
+- UI: [Tailwind CSS](https://tailwindcss.com/) e [Material-UI V4](https://v4.mui.com/)
+- Sistema Operacional (principal): [Linux](https://www.linux.org/), também sendo possível utilizar o [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/) (WSL)
 
 ## O que devo entregar?
 
@@ -90,3 +90,42 @@ Esperamos de você duas entregas: o código no GitHub e um vídeo explicativo no
 ### Prazo limite de entrega
 
 O pull request com sua solução do desafio deve ser feito até a data especificada no corpo do email que você recebeu com a descrição do desafio.
+
+## Link do vídeo solicitado
+
+<https://youtu.be/SpU7ymohBlI>
+
+### Algumas screenshots do projeto
+
+## Tutorial: Como executar aplicação
+
+  Disponibilizei algumas screenshots de como ficou o layout em relação a responsividade, está presente na pasta screen-shots-project
+
+### Observações para seguir o tutorial a baixo é levado em consideração que você
+
+- Já tem instalado em sua máquina:
+  - NodeJS( LTS Version ou >) <https://nodejs.org/pt-br/>
+  - Git(LTS Version ou >) <https://git-scm.com/>
+- É recomendado que utilize o yarn como gerenciador de pacotes porém não é um requisito obrigatório.
+
+### Tutorial
+
+- Passo 1 -> Clone o repositorio do git hub.
+  - >Abra um terminal e insira a seguinte linha de código: </br> git clone https://github.com/Jhonatas-Matheus/desafio-sharenergy-2023-01.git
+- Passp 3 -> Abra 2 terminais na pasta: desafio-sharenergy-2023-01 (A pasta que foi criada ao você executar o git clone)
+- Passo 4 -> Em um dos terminais você deve executar o seguinte comando:
+  - Passo 4.1 -> (Caso você use o yarn):
+    - > cd back-end<br/>yarn<br/>yarn dev
+  - Passso 4.2 -> (Caso você use o npm):
+    - > cd back-end <br/> npm install <br/> npm run dev
+  - Passo 4.3 -> Após ter executado todos os comandos você deve receber a seguinte mensagem no terminal:
+    - >Database conectado com sucesso <br/> Aplicação rodando na porta 2580 <br/> Usuário default já cadastrado
+
+  - Passo 4.4 -> Se você recebeu a mensagem descrita no item 4.3 o back-end já está rodando corretamente pode seguir para o passo 5 para iniciar o front end, caso não tenha recebido essa mensagem apague o repositório e refaça o passo a passo.
+- Passo 5 -> No segundo terminal você deve executar o seguinte comando:
+  - Passo 5.1 -> (Caso você use o yarn):
+    - > cd front-end  <br/>  yarn  <br/>  yarn start
+  - Passo 5.2 -> (Caso você use o npm):
+    - > cd back-end <br/>  npm install <br/>  npm start
+- Passo 6 -> Abra o navegador/browser e acesse o seguinte link <http://localhost:3000/>
+- Passo 7 -> Agora é só testar a aplicação :D
