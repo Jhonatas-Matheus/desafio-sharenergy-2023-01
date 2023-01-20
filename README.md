@@ -91,6 +91,10 @@ Esperamos de você duas entregas: o código no GitHub e um vídeo explicativo no
 
 O pull request com sua solução do desafio deve ser feito até a data especificada no corpo do email que você recebeu com a descrição do desafio.
 
+## Link do vídeo solicitado
+
+<https://youtu.be/SpU7ymohBlI>
+
 ### Algumas screenshots do projeto
 
 ## Tutorial: Como executar aplicação

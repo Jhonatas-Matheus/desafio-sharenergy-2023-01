@@ -39,13 +39,13 @@ const DashboardPage = (props: Props) => {
         (e) =>
           e.name.first
             .toLocaleLowerCase()
-            .includes(searchValue.current?.value as string) ||
+            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
           e.name.last
             .toLocaleLowerCase()
-            .includes(searchValue.current?.value as string) ||
+            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
           e.name.title
             .toLocaleLowerCase()
-            .includes(searchValue.current?.value as string)
+            .includes(searchValue.current?.value.toLocaleLowerCase() as string)
       );
 
       setDisplayUsersRandoms(usersFound);
@@ -54,13 +54,13 @@ const DashboardPage = (props: Props) => {
         (e) =>
           e.email
             .toLocaleLowerCase()
-            .includes(searchValue.current?.value as string) ||
+            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
           e.email
             .toLocaleLowerCase()
-            .includes(searchValue.current?.value as string) ||
+            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
           e.email
             .toLocaleLowerCase()
-            .includes(searchValue.current?.value as string)
+            .includes(searchValue.current?.value.toLocaleLowerCase() as string)
       );
 
       setDisplayUsersRandoms(usersFound);
@@ -69,13 +69,13 @@ const DashboardPage = (props: Props) => {
         (e) =>
           e.login.username
             .toLocaleLowerCase()
-            .includes(searchValue.current?.value as string) ||
+            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
           e.login.username
             .toLocaleLowerCase()
-            .includes(searchValue.current?.value as string) ||
+            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
           e.login.username
             .toLocaleLowerCase()
-            .includes(searchValue.current?.value as string)
+            .includes(searchValue.current?.value.toLocaleLowerCase() as string)
       );
 
       setDisplayUsersRandoms(usersFound);
