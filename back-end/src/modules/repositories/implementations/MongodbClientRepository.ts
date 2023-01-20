@@ -19,7 +19,7 @@ class MongodbClientRepository implements IClientRepository {
     user: IUpdateClientDTO
   ): Promise<IClientModel | null | undefined> {
     const userToBeFound = await this.repository.findOneAndUpdate(
-      { id: userId },
+      { _id: userId },
       {
         $set: {
           ...user,
@@ -29,7 +29,7 @@ class MongodbClientRepository implements IClientRepository {
     if (!userToBeFound) {
       throw new AppError("User not found", 404);
     }
-    const userUpdated = await this.repository.findOne({ userId });
+    const userUpdated = await this.repository.findOne({ _id: userId });
     return userUpdated;
   }
   async deleteClient(userId: string): Promise<void> {
@@ -43,7 +43,7 @@ class MongodbClientRepository implements IClientRepository {
   async getSpecifClient(
     userId: string
   ): Promise<IClientModel | null | undefined> {
-    const userToBeFound = await this.repository.findOne({ id: userId });
+    const userToBeFound = await this.repository.findOne({ _id: userId });
     if (!userToBeFound) {
       throw new AppError("User not found.", 404);
     }

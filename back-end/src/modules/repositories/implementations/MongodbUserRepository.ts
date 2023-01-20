@@ -12,11 +12,11 @@ class MongodbUserRepository implements IUserRepository {
     { password }: IDisplayPassword
   ): Promise<IUserModel | null | undefined> {
     if (password) {
-      const userFound = await this.repository.findOne({ id: userId });
+      const userFound = await this.repository.findOne({ _id: userId });
       return userFound;
     }
     const userFound = await this.repository
-      .findOne({ id: userId })
+      .findOne({ _id: userId })
       .select("-password");
     return userFound;
   }

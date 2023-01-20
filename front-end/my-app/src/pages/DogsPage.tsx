@@ -38,7 +38,7 @@ const DogsPage = (props: Props) => {
         className="flex flex-col gap-2 items-center"
       >
         <h2 className=" pt-4 text-center">
-          Click the button to generate a random dog.
+          Clique no botão abaixo para gerar uma foto de cachorro aleatória.
         </h2>
         <div className="flex gap-1 pt-2 px-4">
           <button>
@@ -55,7 +55,8 @@ const DogsPage = (props: Props) => {
           />
         ) : (
           <p className="text-center">
-            Please press the button with dog for generate a random dog picture.
+            Por favor pressione o botão com o cachorro para gerar a foto do
+            cachorrinho.
           </p>
         )}
       </div>

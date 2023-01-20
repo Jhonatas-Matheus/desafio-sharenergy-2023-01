@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export const toastSucess = (text: string) => {
+const toastSucess = (text: string) => {
   toast.success(text, {
     position: "bottom-right",
     autoClose: 3000,
@@ -12,7 +12,7 @@ export const toastSucess = (text: string) => {
   });
 };
 
-export const toastError = (text: string) => {
+const toastError = (text: string) => {
   toast.error(text, {
     position: "bottom-right",
     autoClose: 3000,
@@ -23,3 +23,18 @@ export const toastError = (text: string) => {
     progress: undefined,
   });
 };
+
+const toastInfo = (text: string) => {
+  toast.info(text, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+};
+
+export { toastSucess, toastError, toastInfo };

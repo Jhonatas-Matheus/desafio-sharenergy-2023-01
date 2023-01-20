@@ -1,19 +1,16 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { SyntheticEvent, useRef, useState } from "react";
 import Container from "../components/Container";
 import Empty from "../assets/empty_picture.png";
+import { codesHttpsOficial } from "../utils/CodesHtttp";
+
 type Props = {};
 
 const CatPage = (props: Props) => {
-  const searchValue = useRef<HTMLInputElement>(null);
   const [catImage, setCatImage] = useState<string>("");
-  const handleSubmit = async (e: SyntheticEvent) => {
-    console.log(searchValue.current?.value);
-    if (!searchValue.current?.value.length) {
-      console.log("Caiu no if");
-      return handleResetSearch(e);
-    }
+  const handleSubmit = async (e: SyntheticEvent, value: string) => {
     e.preventDefault();
-    setCatImage(("https://http.cat/" + searchValue.current?.value) as string);
+    setCatImage(("https://http.cat/" + value) as string);
   };
   const handleResetSearch = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -21,43 +18,28 @@ const CatPage = (props: Props) => {
   };
   return (
     <Container tailWindClass=" flex flex-col justify-around items-center py-10 w-full">
-      <form
-        onSubmit={handleSubmit}
-        className="flex pt-4 md:pt-0 flex-col items-center "
-      >
-        <input
-          className=" bg-slate-200 p-2 rounded-md focus:outline-none focus:bg-slate-300"
-          ref={searchValue}
-          placeholder="Type what you want to search."
-          type="text"
-        />
-        <div className="flex gap-1 pt-2 px-4">
-          <input
-            className="border-solid border-[1px] rounded-md p-2 cursor-pointer hover:bg-slate-200 "
-            type="submit"
-            value="Find Cat"
-          />
-          <button
-            className="border-solid border-[1px] rounded-md p-2 cursor-pointer hover:bg-slate-200 "
-            type="button"
-            onClick={handleResetSearch}
-          >
-            Clean
-          </button>
-        </div>
+      <form className="flex pt-4 md:pt-0 flex-col items-center ">
+        <select
+          className="bg-slate-200 p-2 rounded-md focus:outline-none focus:bg-slate-300"
+          onChange={(e) => handleSubmit(e, e.target.value)}
+        >
+          {codesHttpsOficial.map((e) => (
+            <option value={e}>{e}</option>
+          ))}
+        </select>
       </form>
       <div className="min-w-[300px] min-h-[300px] max-w-[300px] max-h-[300px]  md:max-w-[300px] md:max-h-[300px] mb-10 md:mb-48">
         {catImage.length > 0 ? (
           <img
             className="object-scale-down w-full h-full"
             src={catImage}
-            alt="Imagem do gato"
+            alt="Image of Cat"
           />
         ) : (
           <img
             className="object-scale-down w-full h-ful"
             src={Empty}
-            alt="Imagem empty"
+            alt="Image Empty"
           ></img>
         )}
       </div>
