@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import spin from "../assets/Spin-1s-200px.svg";
 import Container from "../components/Container";
-type Props = {};
 
-const ProtectedRoutes = ({}: Props) => {
+const ProtectedRoutes = () => {
   const navigate = useNavigate();
   const { userAuthenticated, loading } = useContext(UserContext);
   if (loading) {

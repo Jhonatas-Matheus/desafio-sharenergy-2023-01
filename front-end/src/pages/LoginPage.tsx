@@ -1,7 +1,7 @@
 import { AxiosError, AxiosResponse } from "axios";
-import { SyntheticEvent, useContext, useEffect, useState } from "react";
+import { SyntheticEvent, useContext } from "react";
 import { useRef } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Container from "../components/Container";
 import { IUserLoginResponse } from "../hooks/useRequests";
 import { apiLocal } from "../services/api";
@@ -47,7 +47,7 @@ const LoginPage = (props: Props) => {
         }
         return toastError("Algo deu errado tente novamente mais tarde.");
       }
-      toastError("Something went wrong, please try again.");
+      toastError("Algo deu errado tente novamente mais tarde.");
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo_color.png";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { BiMenu, BiX } from "react-icons/bi";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";

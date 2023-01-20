@@ -8,8 +8,6 @@ import DogsPage from "./pages/DogsPage";
 import CrudPage from "./pages/CrudPage";
 import { UserProvider } from "./context/UserContext";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
-import Page404 from "./pages/404Page";
-import ModalCRUDUser from "./components/ModalCRUDCreateClient";
 import { ModalProvider } from "./context/ModalContext";
 import { CurrentClientProvider } from "./context/CurrentClientContext";
 import { TriggerContextProvider } from "./context/TriggerContext";

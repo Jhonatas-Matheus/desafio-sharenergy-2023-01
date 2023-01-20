@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Container from "../components/Container";
-import { apiLocal } from "../services/api";
-import { AxiosError } from "axios";
 import CardCRUDUser from "../components/CardCRUDUser";
 import ModalCRUDUserCreate from "../components/ModalCRUDCreateClient";
 import { ModalContext } from "../context/ModalContext";
@@ -95,6 +93,7 @@ const CrudPage = (props: Props) => {
       } catch (error) {}
     };
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trigger]);
   return (
     <>

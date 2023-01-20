@@ -5,7 +5,7 @@ import { BsTrash, BsGeoAlt } from "react-icons/bs";
 import { BiEditAlt } from "react-icons/bi";
 import { CurrentClientContext } from "../context/CurrentClientContext";
 import { useRequests } from "../hooks/useRequests";
-import { toastInfo } from "../utils/ReactToast";
+
 type Props = {
   user: IClientCRUD;
 };
@@ -20,9 +20,6 @@ const CardCRUDUser = ({ user }: Props) => {
     setModalIsOpenEdit,
   } = useContext(ModalContext);
   const handleopenModalEdit = () => {
-    toastInfo(
-      "Você pode editar qualquer campo sem obrigatoriamente editar todos."
-    );
     setModalIsOpenEdit(!modalIsOpenEdit);
   };
   const handleopenModalDelete = () => {

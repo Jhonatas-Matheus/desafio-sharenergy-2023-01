@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { SyntheticEvent, useRef, useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import Container from "../components/Container";
 import Empty from "../assets/empty_picture.png";
 import { codesHttpsOficial } from "../utils/CodesHtttp";
@@ -11,10 +11,6 @@ const CatPage = (props: Props) => {
   const handleSubmit = async (e: SyntheticEvent, value: string) => {
     e.preventDefault();
     setCatImage(("https://http.cat/" + value) as string);
-  };
-  const handleResetSearch = (e: SyntheticEvent) => {
-    e.preventDefault();
-    setCatImage("");
   };
   return (
     <Container tailWindClass=" flex flex-col justify-around items-center py-10 w-full">

@@ -1,14 +1,9 @@
-import React, { useEffect, useRef, useState, SyntheticEvent } from "react";
+import { useEffect, useRef, useState, SyntheticEvent } from "react";
 import Container from "../components/Container";
 import CardRandomUser from "../components/CardRandomUser";
 import { apiRandomUser } from "../services/api";
 import { RxDoubleArrowRight } from "react-icons/rx";
 import { RxDoubleArrowLeft } from "react-icons/rx";
-import { UserContext } from "../context/UserContext";
-
-//  Clean input after submit;
-//  Converte Forms elements to Isolated Component;
-//  Fix bug scroll bar in screeen > 1280;
 
 type Props = {};
 interface IUserRandom {
