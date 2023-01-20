@@ -20,7 +20,10 @@ const UserProvider = ({ children }: IUserProps) => {
     const verifyUserToken = async () => {
       let token: string | null = "";
       token = localStorage.getItem("token");
-      token = sessionStorage.getItem("token");
+      if(!token){
+        token = sessionStorage.getItem("token");
+      }
+      sessionStorage.setItem("token", token as string);
       try {
         const response: AxiosResponse = await apiLocal.post(
           "token",
