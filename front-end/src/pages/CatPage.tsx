@@ -19,8 +19,10 @@ const CatPage = (props: Props) => {
           className="bg-slate-200 p-2 rounded-md focus:outline-none focus:bg-slate-300"
           onChange={(e) => handleSubmit(e, e.target.value)}
         >
-          {codesHttpsOficial.map((e) => (
-            <option value={e}>{e}</option>
+          {codesHttpsOficial.map((e, i) => (
+            <option value={e} key={i}>
+              {e}
+            </option>
           ))}
         </select>
       </form>

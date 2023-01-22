@@ -1,12 +1,18 @@
-import { useEffect, useRef, useState, SyntheticEvent } from "react";
+import { useEffect, useState } from "react";
 import Container from "../components/Container";
 import CardRandomUser from "../components/CardRandomUser";
 import { apiRandomUser } from "../services/api";
 import { RxDoubleArrowRight } from "react-icons/rx";
 import { RxDoubleArrowLeft } from "react-icons/rx";
+import {
+  ISearchRandomUserGenarete,
+  useValidateFormSearchRandomUser,
+} from "../hooks/useValidateForm";
+import { handleSearch } from "../utils/FunctionSearch";
+import FormSearch from "../components/FormSearchRandomUserGenerator";
 
 type Props = {};
-interface IUserRandom {
+export interface IUserRandom {
   login: { username: string };
   dob: { age: string };
   email: string;
@@ -14,72 +20,24 @@ interface IUserRandom {
   picture: { large: string };
 }
 const DashboardPage = (props: Props) => {
-  const [usersRandoms, setUsersRandoms] = useState<IUserRandom[]>([]);
+  const { register, handleSubmit, reset } = useValidateFormSearchRandomUser();
+
+  const [usersRandoms, setUsersRandoms] = useState<IUserRandom[] | any>([]);
   const [displayUsersRandoms, setDisplayUsersRandoms] =
     useState<IUserRandom[]>();
-  const searchValue = useRef<HTMLInputElement>(null);
-  const optionName = useRef<HTMLInputElement>(null);
-  const optionEmail = useRef<HTMLInputElement>(null);
-  const optionUsername = useRef<HTMLInputElement>(null);
   const [triggerResetSearch, setTriggerResetSearch] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
   const handleResetSearch = () => {
-    if(searchValue.current){
-      searchValue.current.value = ''
-    }
+    reset();
     setTriggerResetSearch(!triggerResetSearch);
   };
-  const handleSubmit = (e: SyntheticEvent) => {
-    e.preventDefault();
-    if (!searchValue) {
-      return setCurrentPage(currentPage);
-    }
-    if (optionName.current?.checked) {
-      const usersFound = usersRandoms.filter(
-        (e) =>
-          e.name.first
-            .toLocaleLowerCase()
-            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
-          e.name.last
-            .toLocaleLowerCase()
-            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
-          e.name.title
-            .toLocaleLowerCase()
-            .includes(searchValue.current?.value.toLocaleLowerCase() as string)
-      );
-
-      setDisplayUsersRandoms(usersFound);
-    } else if (optionEmail.current?.checked) {
-      const usersFound = usersRandoms.filter(
-        (e) =>
-          e.email
-            .toLocaleLowerCase()
-            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
-          e.email
-            .toLocaleLowerCase()
-            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
-          e.email
-            .toLocaleLowerCase()
-            .includes(searchValue.current?.value.toLocaleLowerCase() as string)
-      );
-
-      setDisplayUsersRandoms(usersFound);
-    } else if (optionUsername.current?.checked) {
-      const usersFound = usersRandoms.filter(
-        (e) =>
-          e.login.username
-            .toLocaleLowerCase()
-            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
-          e.login.username
-            .toLocaleLowerCase()
-            .includes(searchValue.current?.value.toLocaleLowerCase() as string) ||
-          e.login.username
-            .toLocaleLowerCase()
-            .includes(searchValue.current?.value.toLocaleLowerCase() as string)
-      );
-
-      setDisplayUsersRandoms(usersFound);
-    }
+  const handleOnSubmit = (data: ISearchRandomUserGenarete) => {
+    handleSearch({
+      array: usersRandoms,
+      data: data,
+      setDisplay: setDisplayUsersRandoms,
+    });
   };
   useEffect(() => {
     const getData = async () => {
@@ -102,86 +60,12 @@ const DashboardPage = (props: Props) => {
   };
   return (
     <Container>
-      <form
-        className="flex md:hidden flex-col items-center w-full"
-        onSubmit={handleSubmit}
-      >
-        <div className="flex flex-col items-center gap-2 pt-4 px-4 md:px-4">
-          <input
-            className=" bg-slate-200 w-full md:w-auto p-2 rounded-md focus:outline-none focus:bg-slate-300 placeholder:text-center "
-            ref={searchValue}
-            placeholder="Digite o que deseja buscar."
-            type="text"
-          />
-          <div className="flex gap2">
-            <input
-              className="border-solid border-[1px] rounded-md p-2 cursor-pointer hover:bg-slate-200 "
-              type="submit"
-              value="Pesquisar"
-            />
-            <button
-              className="border-solid border-[1px] rounded-md p-2 cursor-pointer hover:bg-slate-200 "
-              type="button"
-              onClick={handleResetSearch}
-            >
-              Resetar Pesquisa
-            </button>
-          </div>
-        </div>
-        <div className="flex gap-4">
-          <label className="flex gap-2 items-center">
-            <input ref={optionName} type="radio" name="name" id="" />
-            Nome
-          </label>
-          <label className="flex gap-2 items-center">
-            <input ref={optionEmail} type="radio" name="name" id="" />
-            Email
-          </label>
-          <label className="flex gap-2 items-center">
-            <input ref={optionUsername} type="radio" name="name" id="" />
-            Usuário
-          </label>
-        </div>
-      </form>
-      <form
-        className="hidden md:flex flex-col items-center w-full"
-        onSubmit={handleSubmit}
-      >
-        <div className="flex gap-2 pt-4 px-4 md:px-4">
-          <input
-            className=" bg-slate-200 w-[40%] md:w-auto p-2 rounded-md focus:outline-none focus:bg-slate-300 "
-            ref={searchValue}
-            placeholder="Digite o que deseja buscar."
-            type="text"
-          />
-          <input
-            className="border-solid border-[1px] rounded-md p-2 cursor-pointer hover:bg-slate-200 "
-            type="submit"
-            value="Pesquisar"
-          />
-          <button
-            className="border-solid border-[1px] rounded-md p-2 cursor-pointer hover:bg-slate-200 "
-            type="button"
-            onClick={handleResetSearch}
-          >
-            Resetar Pesquisa
-          </button>
-        </div>
-        <div className="flex gap-4">
-          <label className="flex gap-2 items-center">
-            <input ref={optionName} type="radio" name="name" id="" />
-            Nome
-          </label>
-          <label className="flex gap-2 items-center">
-            <input ref={optionEmail} type="radio" name="name" id="" />
-            Email
-          </label>
-          <label className="flex gap-2 items-center">
-            <input ref={optionUsername} type="radio" name="name" id="" />
-            Usuário
-          </label>
-        </div>
-      </form>
+      <FormSearch
+        handleOnSubmit={handleOnSubmit}
+        handleResetSearch={handleResetSearch}
+        handleSubmit={handleSubmit}
+        register={register}
+      />
       <ul className="grid px-4 pt-10 pb-20 overflow-x-hidden overflow-y-auto 2xl:overflow-y-hidden h-[80%] w-full md:h-full  place-items-center  grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-10 scrl-customize1 ">
         {displayUsersRandoms?.map((e, i) => (
           <CardRandomUser

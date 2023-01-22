@@ -45,14 +45,13 @@ export interface IClientCRUDToUpdate {
     zipCode?: string;
   };
 }
-type Props = {};
 interface ISearch {
   searchText: string;
 }
 const formSchema = yup.object({
   searchText: yup.string(),
 });
-const CrudPage = (props: Props) => {
+const CrudPage = () => {
   const { setModalIsOpenCreate, modalIsOpenCreate } = useContext(ModalContext);
   const { handleSubmit, reset, register } = useForm<ISearch>({
     resolver: yupResolver(formSchema),
@@ -99,13 +98,10 @@ const CrudPage = (props: Props) => {
     <>
       <Container>
         <form
-          className=" flex md:hidden flex-col items-center w-full"
+          className=" flex flex-col items-center w-full"
           onSubmit={handleSubmit(handleOnSubmit)}
         >
-          <div className="flex flex-col gap-2 pt-4 px-4 md:px-4">
-            {/* <label className="  w-[40%] md:w-auto p-2 rounded-md focus:outline-none focus:bg-slate-300 ">
-              <h2 className="whitespace-nowrap">Busque por nome ou cpf</h2>
-            </label> */}
+          <div className="flex flex-col lg:flex-row gap-2 pt-4 px-4 md:px-4">
             <input
               {...register("searchText")}
               className=" bg-slate-200 w-full md:w-auto p-2 rounded-md focus:outline-none focus:bg-slate-300 placeholder:text-center "
@@ -134,42 +130,6 @@ const CrudPage = (props: Props) => {
                 <BiRefresh size={25} />
               </button>
             </div>
-          </div>
-        </form>
-        <form
-          className="hidden md:flex flex-col items-center w-full"
-          onSubmit={handleSubmit(handleOnSubmit)}
-        >
-          <div className="flex gap-2 pt-4 px-4 md:px-4">
-            {/* <label className="  w-[40%] md:w-auto p-2 rounded-md focus:outline-none focus:bg-slate-300 ">
-              <h2 className="whitespace-nowrap">Busque por nome ou cpf</h2>
-            </label> */}
-            <input
-              {...register("searchText")}
-              className=" bg-slate-200 w-[40%] md:w-auto p-2 rounded-md focus:outline-none focus:bg-slate-300 "
-              placeholder="Insira o nome ou cpf."
-              type="text"
-            />
-            <input
-              className="border-solid border-[1px] rounded-md p-2 cursor-pointer hover:bg-slate-200 "
-              type="submit"
-              value="Buscar"
-            />
-            <input
-              className="border-solid border-[1px] rounded-md p-2 cursor-pointer hover:bg-slate-200 "
-              type="button"
-              value="Cadastrar Cliente"
-              onClick={handleShowModal}
-            />
-            <button
-              className="border-solid border-[1px] rounded-md p-2 cursor-pointer hover:bg-slate-200 "
-              onClick={(e) => {
-                e.preventDefault();
-                handleRereshList();
-              }}
-            >
-              <BiRefresh size={25} />
-            </button>
           </div>
         </form>
         <ul className="flex flex-col gap-10 w-full  md:w-[50%] lg:w-[50%] h-full py-4 pb-40 px-4 overflow-y-auto mt-4 scrl-customize1">
