@@ -20,7 +20,7 @@ const UserProvider = ({ children }: IUserProps) => {
     const verifyUserToken = async () => {
       let token: string | null = "";
       token = localStorage.getItem("token");
-      if(!token){
+      if (!token) {
         token = sessionStorage.getItem("token");
       }
       sessionStorage.setItem("token", token as string);
@@ -32,10 +32,8 @@ const UserProvider = ({ children }: IUserProps) => {
             headers: { Authorization: "Bearer " + token },
           }
         );
-        console.log(response.data);
         setUserAuthenticated(true);
       } catch (error) {
-        console.log(error);
       } finally {
         setLoading(false);
       }
