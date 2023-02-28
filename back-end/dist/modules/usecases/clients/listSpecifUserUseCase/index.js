@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getSpecificClientController = void 0;
+const MongodbClientRepository_1 = require("../../../repositories/implementations/MongodbClientRepository");
+const GetSpecifcUserUseCase_1 = require("./GetSpecifcUserUseCase");
+const GetSpecificUserController_1 = require("./GetSpecificUserController");
+const mongodbClientRepository = new MongodbClientRepository_1.MongodbClientRepository();
+const getSpecificClientUseCase = new GetSpecifcUserUseCase_1.GetSpecificClientUseCase(mongodbClientRepository);
+const getSpecificClientController = new GetSpecificUserController_1.GetSpecificClientController(getSpecificClientUseCase);
+exports.getSpecificClientController = getSpecificClientController;

@@ -1,0 +1,27 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.app = void 0;
+require("express-async-errors");
+const cors_1 = __importDefault(require("cors"));
+const express_1 = __importDefault(require("express"));
+const AppError_1 = require("./errors/AppError");
+const ensureAuthentication_1 = require("./middlewares/ensureAuthentication");
+const clients_routes_1 = require("./routes/clients.routes");
+const refresh_token_routes_1 = require("./routes/refresh.token.routes");
+const token_routes_1 = require("./routes/token.routes");
+const user_login_routes_1 = require("./routes/user.login.routes");
+const user_register_routes_1 = require("./routes/user.register.routes");
+const app = (0, express_1.default)();
+exports.app = app;
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
+app.use("/register", user_register_routes_1.registerRouter);
+app.use("/login", user_login_routes_1.loginRouter);
+app.use(ensureAuthentication_1.tokenVerify);
+app.use("/client", clients_routes_1.clientsRouter);
+app.use("/refresh", refresh_token_routes_1.refreshRouter);
+app.use("/token", token_routes_1.tokenRouter);
+app.use(AppError_1.errorHandle);

@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createUserController = void 0;
+const MongodbUserRepository_1 = require("../../../repositories/implementations/MongodbUserRepository");
+const createUserController_1 = require("./createUserController");
+const createUserUseCase_1 = require("./createUserUseCase");
+const mongodbUserRepository = new MongodbUserRepository_1.MongodbUserRepository();
+const createUserUseCase = new createUserUseCase_1.CreateUserUseCase(mongodbUserRepository);
+const createUserController = new createUserController_1.CreateUserController(createUserUseCase);
+exports.createUserController = createUserController;

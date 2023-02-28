@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.refreshTokenUserController = void 0;
+const MongodbRefreshTokenRepository_1 = require("../../../repositories/implementations/MongodbRefreshTokenRepository");
+const RefreshTokenController_1 = require("./RefreshTokenController");
+const RefreshTokenUseCase_1 = require("./RefreshTokenUseCase");
+const mongodbRefreshTokenRepository = new MongodbRefreshTokenRepository_1.MongodbRefreshTokenRepository();
+const refreshTokenUserUseCase = new RefreshTokenUseCase_1.RefreshTokenUserUseCase(mongodbRefreshTokenRepository);
+const refreshTokenUserController = new RefreshTokenController_1.RefreshTokenUserController(refreshTokenUserUseCase);
+exports.refreshTokenUserController = refreshTokenUserController;
