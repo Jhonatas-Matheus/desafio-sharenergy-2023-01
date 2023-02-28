@@ -23,11 +23,12 @@ const Navbar = (props: Props) => {
       {userAuthenticated ? (
         <>
           <header className="fixed top-0 z-10 flex w-full h-[80px] shadow-xl px-5 items-center justify-between bg-white">
-            <img
+            <h1>Projeto Full-Stack</h1>
+            {/* <img
               src={logo}
               className="w-[50%] md:w-[20%] object-scale-down"
               alt=""
-            />
+            /> */}
             {/* Navbar desktop */}
             <nav className="hidden md:flex">
               <ul className="flex gap-4">
@@ -110,11 +111,12 @@ const Navbar = (props: Props) => {
       ) : (
         <>
           <header className="fixed top-0 z-10 flex w-full h-[80px] shadow-xl px-5 items-center justify-center bg-white">
-            <img
+            {/* <img
               src={logo}
               className="w-[50%] md:w-[20%] object-scale-down"
               alt=""
-            />
+            /> */}
+            <h1>Projeto Full-Stack</h1>
           </header>
         </>
       )}
