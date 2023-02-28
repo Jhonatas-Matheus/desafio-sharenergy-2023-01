@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const apiLocal = axios.create({
-  baseURL: "http://45.90.108.19:2580",
+  baseURL: "https://45.90.108.19:2580",
   timeout: 5000,
 });
 
