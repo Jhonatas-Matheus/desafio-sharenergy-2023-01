@@ -88,6 +88,9 @@ const LoginPage = (props: Props) => {
             value="Iniciar Sessão"
           />
         </form>
+        <span style={{ alignSelf: "center" }}>
+          Utilize usuário: teste - senha: teste | Para fazer o login
+        </span>
       </div>
     </Container>
   );
